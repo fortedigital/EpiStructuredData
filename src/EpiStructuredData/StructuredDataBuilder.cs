@@ -20,6 +20,8 @@ namespace EpiStructuredData
 
         public static HtmlString StructuredData(this HtmlHelper html, ContentReference contentReference)
         {
+            if (contentReference == null) return null;
+            
             ServiceLocator.Current.GetInstance<IContentLoader>().TryGet(contentReference, out IContentData data);
 
             var result = new StringBuilder();
